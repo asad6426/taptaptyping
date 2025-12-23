@@ -1,0 +1,27 @@
+<nav class="w-full bg-[#0D6073] text-white">
+      <div class="container flex items-center justify-between px-4 py-3 mx-auto">
+        <div class="flex items-center space-x-4">
+          <img src="/static/taptaptyping logo.jpg" alt="Logo" class="w-10 h-10 rounded-full">
+          <a href="/" class="text-lg font-bold">TapTapTyping</a>
+        </div>
+        <button id="hamburgerMenu" class="text-white hidden lg:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <div id="navLinks" class="flex space-x-6">
+          <a href="/" class="hover:text-yellow-400 font_family text-xl">Home</a>
+          <a href="{% url 'taptap' %}" class="hover:text-yellow-400 font_family text-xl">Typing Test</a>
+          <a href="{% url 'taptap' %}" class="hover:text-yellow-400 font_family text-xl">Typing Lesson</a>
+          <a href="{% url 'taptap' %}" class="hover:text-yellow-400 font_family text-xl">Typing Games</a>
+          <a href="{% url 'taptap' %}" class="hover:text-yellow-400 font_family text-xl">Typing Blog</a>
+          <a href="{% url 'FAQ' %}" class="hover:text-yellow-400 font_family text-xl">FAQ</a>
+          <a href="{% url 'jobs' %}" class="hover:text-yellow-400 font_family text-xl">Typing JobPosts</a>
+          {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="hover:text-yellow-400 font_family text-xl">Logout</a>
+          {% else %}
+        <a href="{% url 'login' %}" class="hover:text-yellow-400 font_family text-xl">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>

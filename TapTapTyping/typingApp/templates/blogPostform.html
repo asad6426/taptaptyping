@@ -1,0 +1,94 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block title %}Blog Post Form
+{% endblock %}
+{% block extra_head %}
+    {{ form.media }}  <!-- ✅ Put this in a head block if supported -->
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #ECF7F9;
+        color: #1a202c;
+    }
+    .main-content {
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Center text inside main content */
+    }
+    .header-title {
+        color: #0D6073;
+        font-weight: bold;
+        font-size: 2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .header-subtitle {
+        color: #1f8ea6;
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    .center-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    .test-select {
+        width: 50%;
+        min-width: 250px;
+        max-width: 400px;
+        padding: 0.5rem;
+        border: 2px solid #0D6073;
+        border-radius: 1.5rem;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+    .testTimeTitle {
+        color: rgb(5, 90, 109);
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+    .btn-custom {
+        background-color: #0D6073;
+        color: white;
+        border-radius: 1.5rem;
+        padding: 0.6rem 2rem;
+        margin-top: 2rem;
+    }
+    .btn-custom:hover {
+        background-color: #1f8ea6;
+    }
+</style>
+<main class="main-content">
+
+    <h2 class="header-title">Check your typing skills in a minute</h2>
+    <p class="header-subtitle">Type away to join 150+ million test takers!</p>
+<script type="text/javascript" src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-custom">Submit</button>
+    </form>
+
+
+<script type="text/javascript">
+    tinymce.init({
+        selector: 'textarea',  // Automatically apply TinyMCE to all textareas
+        menubar: false,  // Disable the menu bar for simplicity
+        height: 300,  // Set the height of the editor
+        toolbar: 'undo redo | bold italic | link unlink | bullist numlist | alignleft aligncenter alignright | removeformat',  // Full toolbar with link options
+        plugins: 'link lists',  // Enable link and list plugins
+        link_assume_external_targets: true,  // Optionally make external links open in a new tab
+    });
+</script>
+
+</script>
+</main>
+</main>
+{% endblock %}

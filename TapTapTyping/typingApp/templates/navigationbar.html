@@ -1,0 +1,88 @@
+<style>
+    /* Existing styles */
+    body {
+      background-color: #f7fafc; /* Equivalent to bg-gray-100 */
+      color: #1a202c; /* Equivalent to text-gray-900 */
+    }
+    .navbar-custom {
+      background-color: #0d6073; /* Custom navbar color */
+    }
+    .navbar-custom .nav-link {
+      color: white; /* Navbar link color */
+      font-size: 1.2rem; /* Update font size for navbar links */
+    }
+    .navbar-custom .nav-link:hover {
+      color: #ffd700; /* Equivalent to hover:text-yellow-400 */
+    }
+    .dropdown-menu {
+      background-color: #0d6073; /* Match dropdown background color to navbar */
+    }
+    .dropdown-menu .dropdown-item {
+      color: white; /* Dropdown item text color */
+      font-size: 1.1rem; /* Update font size for dropdown items */
+    }
+    .dropdown-menu .dropdown-item:hover {
+      background-color: #ffd700; /* Change background color on hover */
+      color: #0d6073; /* Change text color on hover */
+    }
+    /* Show dropdown on hover */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+</style>
+
+ <div id="app">
+    <!-- Full-width Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/static/taptaptyping logo.jpg" alt="Logo" class="rounded-circle" style="width: 40px; height: 40px;">
+          TapTapTyping
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'taptap' %}">Typing Test</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'typingLession' %}">Typing Lesson</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'typingGame' %}">Typing Games</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'blogs' %}">Typing Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'jobs' %}">JobPosts</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                Others
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'FAQ' %}">FAQ</a></li>
+                <li><a class="dropdown-item" href="{% url 'aboutus' %}">About Us</a></li>
+                <li><a class="dropdown-item" href="{% url 'policy' %}">Terms & Privacy</a></li>
+              </ul>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+</div>
